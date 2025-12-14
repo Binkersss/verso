@@ -9,6 +9,7 @@ import (
 	"path/filepath"
 	"strings"
 
+	"github.com/Binkersss/verso/pkg/client"
 	"github.com/Binkersss/verso/pkg/parser"
 )
 
@@ -44,6 +45,10 @@ func (b *Builder) Build() error {
 	pages, err := b.parseContent()
 	if err != nil {
 		return fmt.Errorf("failed to parse content: %w", err)
+	}
+
+	if err := b.writeClient(pages); err != nil {
+		return fmt.Errorf("failed to write client: %w", err)
 	}
 
 	if err := b.writeManifest(pages); err != nil {
@@ -122,6 +127,33 @@ func (b *Builder) copyTemplate() error {
 	}
 
 	return os.WriteFile(dst, data, 0644)
+}
+
+func (b *Builder) writeClient(pages map[string]parser.Page) error {
+	// Convert parser.Page to client.Page
+	clientPages := make(map[string]client.Page)
+	for route, page := range pages {
+		clientPages[route] = client.Page{
+			Route:    page.Route,
+			Content:  page.Content,
+			Metadata: page.Metadata,
+		}
+	}
+
+	// Generate client JS
+	clientConfig := client.DefaultConfig()
+	js, err := client.Generate(client.ContentManifest{Pages: clientPages}, clientConfig)
+	if err != nil {
+		return err
+	}
+
+	// Write to dist/app.js
+	jsPath := filepath.Join(b.outputDir, "app.js")
+	if err := os.WriteFile(jsPath, []byte(js), 0644); err != nil {
+		return err
+	}
+
+	return nil
 }
 
 func (b *Builder) copyStatic() error {
