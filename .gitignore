@@ -34,5 +34,5 @@ go.work.sum
 content/
 static/
 templates/
-
+dist/
 
