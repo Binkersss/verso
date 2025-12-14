@@ -1,5 +1,3 @@
-An awesome static site generator that I wrote because I cba to learn frontend. 
-
 # Verso
 
 An awesome static site generator with built-in SPA routing. Write markdown, get a fast single-page site.
