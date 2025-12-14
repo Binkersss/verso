@@ -1,12 +1,12 @@
 # Verso
 
-An awesome static site generator with built-in SPA routing. Write markdown, get a fast single-page site.
+An awesome static site generator and server with built-in SPA routing. Write markdown, get a fast single-page site.
 
 ## Features
 
 - **Markdown with frontmatter** - YAML metadata support
 - **Built-in SPA routing** - No JavaScript needed from you
-- **Live reloading** - Auto-rebuilds on file changes
+- **Live reloading** - Dev Server auto-rebuilds on file changes
 - **No Code, No Config** - Sensible defaults, works out of the box
 - **Go-powered** - Fast builds, simple deployment
 
