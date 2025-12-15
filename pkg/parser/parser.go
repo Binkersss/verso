@@ -35,6 +35,7 @@ func New() *Parser {
 		goldmark.WithRendererOptions(
 			html.WithHardWraps(),
 			html.WithXHTML(),
+			html.WithUnsafe(),
 		),
 	)
 
