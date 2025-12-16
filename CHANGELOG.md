@@ -9,3 +9,4 @@ Literally everything lol.
 
 ### Changed
 - Reorganized project structure to include `examples/` directory with sample implementations for testing and reference
+- Added syntax highlighting and copy-paste button generation in `pkg/client/generator.go`. Updated `examples/` (lines 189-246 of `style.css` and lines 10-11 of `index.html`) to match and integrate with that feature. 

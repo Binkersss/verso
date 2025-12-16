@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nathaniel Chappelle</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+  <script>
+    // Get computed CSS variables
+    const root = getComputedStyle(document.documentElement);
+    const primaryColor = root.getPropertyValue('--color-primary').trim();
+    const darkColor = root.getPropertyValue('--color-dark').trim();
+
+    // Create SVG favicon
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+        <rect width="32" height="32" fill="${darkColor}" rx="6"/>
+        <text x="16" y="23" font-family="sans-serif" font-size="20" font-weight="bold" 
+              fill="${primaryColor}" text-anchor="middle">C</text>
+      </svg>
+      `;
+
+    // Convert to data URL and set as favicon
+    const favicon = document.querySelector("link[rel='icon']") || document.createElement('link');
+    favicon.rel = 'icon';
+    favicon.href = 'data:image/svg+xml,' + encodeURIComponent(svg);
+    document.head.appendChild(favicon);
+  </script>
+  <script src="/particles.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">Nathaniel Chappelle</div>
+      <nav id="nav"></nav>
+      <div class="sidebar-footer">
+        <p>
+          <a href="https://github.com/Binkersss">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="https://x.com/binkersssdev">
+            <i class="fa-brands fa-x-twitter"></i>
+          </a>
+        </p>
+      </div>
+    </aside>
+    <main class="content" id="content">
+      <p>Loading...</p>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+
+</html>
