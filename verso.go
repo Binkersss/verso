@@ -13,6 +13,7 @@ type Config struct {
 	TemplateDir string
 	StaticDir   string
 	OutputDir   string
+	SiteTitle   string
 }
 
 type Site struct {
@@ -23,7 +24,7 @@ type Site struct {
 func New(cfg Config) *Site {
 	return &Site{
 		config:  cfg,
-		builder: builder.New(cfg.ContentDir, cfg.TemplateDir, cfg.StaticDir, cfg.OutputDir),
+		builder: builder.New(cfg.ContentDir, cfg.TemplateDir, cfg.StaticDir, cfg.OutputDir, cfg.SiteTitle),
 	}
 }
 

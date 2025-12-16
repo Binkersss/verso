@@ -22,15 +22,17 @@ type Builder struct {
 	templateDir string
 	staticDir   string
 	outputDir   string
+	siteTitle   string
 	parser      *parser.Parser
 }
 
-func New(contentDir, templateDir, staticDir, outputDir string) *Builder {
+func New(contentDir, templateDir, staticDir, outputDir, siteTitle string) *Builder {
 	return &Builder{
 		contentDir:  contentDir,
 		templateDir: templateDir,
 		staticDir:   staticDir,
 		outputDir:   outputDir,
+		siteTitle:   siteTitle,
 		parser:      parser.New(),
 	}
 }
@@ -142,6 +144,7 @@ func (b *Builder) writeClient(pages map[string]parser.Page) error {
 
 	// Generate client JS
 	clientConfig := client.DefaultConfig()
+	clientConfig.SiteTitle = b.siteTitle
 	js, err := client.Generate(client.ContentManifest{Pages: clientPages}, clientConfig)
 	if err != nil {
 		return err
