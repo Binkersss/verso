@@ -16,6 +16,7 @@ func main() {
 		templateDir = flag.String("templates", "templates", "Templates directory")
 		staticDir   = flag.String("static", "static", "Static assets directory")
 		outputDir   = flag.String("output", "dist", "Output directory")
+		siteTitle   = flag.String("title", "Verso Site", "Default Site Title")
 	)
 	flag.Parse()
 
@@ -24,6 +25,7 @@ func main() {
 		TemplateDir: *templateDir,
 		StaticDir:   *staticDir,
 		OutputDir:   *outputDir,
+		SiteTitle:   *siteTitle,
 	}
 
 	site := verso.New(cfg)

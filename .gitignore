@@ -35,4 +35,4 @@ content/
 static/
 templates/
 dist/
-
+testMain.go
