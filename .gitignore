@@ -31,8 +31,4 @@ go.work.sum
 # .idea/
 # .vscode/
 
-content/
-static/
-templates/
 dist/
-testMain.go
