@@ -1,7 +1,3 @@
-## [0.0.1]
-
-Literally everything lol.
-
 ## [v0.0.2] 
 
 ### Fixed
@@ -40,4 +36,9 @@ author: Your Name
 
 Content here...
 ```
+
+## [0.0.1]
+
+Literally everything lol.
+
 
