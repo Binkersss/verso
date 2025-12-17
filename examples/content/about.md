@@ -3,8 +3,6 @@ title: About Me
 date: 2024-12-13
 ---
 
-# About Me
-
 I'm a systems developer and Masters Student at Oregon State University who loves building fast, minimal software. I spend most of my time working on:
 
 - Distributed systems
