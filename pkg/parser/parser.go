@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/yuin/goldmark"
@@ -50,7 +51,14 @@ func (p *Parser) Parse(content string) (map[string]interface{}, string, error) {
 		return nil, "", err
 	}
 
-	return metadata, buf.String(), nil
+	htmlContent := buf.String()
+
+	metaHeader := buildMetadataHeader(metadata)
+	if metaHeader != "" {
+		htmlContent = metaHeader + htmlContent
+	}
+
+	return metadata, htmlContent, nil
 }
 
 func (p *Parser) parseFrontmatter(content string) (map[string]interface{}, string) {
@@ -67,4 +75,46 @@ func (p *Parser) parseFrontmatter(content string) (map[string]interface{}, strin
 
 	_ = yaml.Unmarshal([]byte(parts[0]), &metadata)
 	return metadata, strings.TrimSpace(parts[1])
+}
+
+func buildMetadataHeader(metadata map[string]interface{}) string {
+	var parts []string
+
+	// Add date
+	if date, ok := metadata["date"].(string); ok && date != "" {
+		parts = append(parts, fmt.Sprintf(`<time class="page-date">%s</time>`, date))
+	}
+
+	// Add authors
+	if authors := getAuthors(metadata); authors != "" {
+		parts = append(parts, fmt.Sprintf(`<div class="page-authors">%s</div>`, authors))
+	}
+
+	if len(parts) == 0 {
+		return ""
+	}
+
+	return `<div class="page-metadata">` + strings.Join(parts, "") + `</div>` + "\n"
+}
+
+func getAuthors(metadata map[string]interface{}) string {
+	// Handle single author
+	if author, ok := metadata["author"].(string); ok && author != "" {
+		return author
+	}
+
+	// Handle multiple authors as array
+	if authors, ok := metadata["authors"].([]interface{}); ok {
+		var authorStrs []string
+		for _, a := range authors {
+			if s, ok := a.(string); ok {
+				authorStrs = append(authorStrs, s)
+			}
+		}
+		if len(authorStrs) > 0 {
+			return strings.Join(authorStrs, ", ")
+		}
+	}
+
+	return ""
 }

@@ -186,6 +186,24 @@ body {
 	font-weight: 600;
 }
 
+.page-metadata {
+	margin-bottom: 2em;
+	padding-bottom: 1em;
+	border-bottom: 1px solid var(--color-border);
+	color: var(--color-text-sidebar-muted);
+	font-size: 0.9em;
+}
+
+.page-date {
+	display: inline-block;
+	color: var(--color-text-light);
+}
+
+.page-authors {
+	display: inline-block;
+	color: var(--color-text-light);
+}
+
 /* Inline code */
 .content code {
 	background: var(--color-code-bg);

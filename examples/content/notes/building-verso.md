@@ -1,6 +1,7 @@
 ---
-title: Building Verso: A Static Site Generator and Server in Go (And How You're Seeing This Right Now)
-date: 2025-12-14
+title: "Building Verso: A Static Site Generator and Server in Go (And How You're Seeing This Right Now)"
+date: December 15th, 2025 
+author: Nathaniel Chappelle
 ---
 
 ## Building Verso: A Static Site Generator and Server in Go (And How You're Seeing This Right Now)
