@@ -2,8 +2,6 @@
 title: Projects
 ---
 
-# Projects
-
 Here are some things I've built:
 
 ## Feather-Virt

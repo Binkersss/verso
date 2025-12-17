@@ -6,6 +6,4 @@ authors:
     - Bob Smith
 ---
 
-# Collaborative Post SMOKE
-
 Content here...

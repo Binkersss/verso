@@ -4,8 +4,6 @@ date: December 15th, 2025
 author: Nathaniel Chappelle
 ---
 
-## Building Verso: A Static Site Generator and Server in Go (And How You're Seeing This Right Now)
-
 I knew I wanted a portfolio that would make my skills shine, but I am not the greatest front end dev. Therefore I decided to build a backend tool that would parse, build, and serve my portfolio (almost like a mini frontend framework).
 
 ### The Problem
