@@ -80,21 +80,30 @@ func (p *Parser) parseFrontmatter(content string) (map[string]interface{}, strin
 func buildMetadataHeader(metadata map[string]interface{}) string {
 	var parts []string
 
-	// Add date
-	if date, ok := metadata["date"].(string); ok && date != "" {
-		parts = append(parts, fmt.Sprintf(`<time class="page-date">%s</time>`, date))
+	// Add title as h1
+	if title, ok := metadata["title"].(string); ok && title != "" {
+		parts = append(parts, fmt.Sprintf(`<h1>%s</h1>`, title))
 	}
 
-	// Add authors
+	// Add date and authors in metadata section
+	var metaParts []string
+	if date, ok := metadata["date"].(string); ok && date != "" {
+		metaParts = append(metaParts, fmt.Sprintf(`<time class="page-date">%s</time>`, date))
+	}
+
 	if authors := getAuthors(metadata); authors != "" {
-		parts = append(parts, fmt.Sprintf(`<div class="page-authors">%s</div>`, authors))
+		metaParts = append(metaParts, fmt.Sprintf(`<span class="page-authors">%s</span>`, authors))
+	}
+
+	if len(metaParts) > 0 {
+		parts = append(parts, `<div class="page-meta-info">`+strings.Join(metaParts, " • ")+`</div>`)
 	}
 
 	if len(parts) == 0 {
 		return ""
 	}
 
-	return `<div class="page-metadata">` + strings.Join(parts, "") + `</div>` + "\n"
+	return `<div class="page-header">` + strings.Join(parts, "") + `</div>` + "\n"
 }
 
 func getAuthors(metadata map[string]interface{}) string {
