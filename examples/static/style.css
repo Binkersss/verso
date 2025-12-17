@@ -163,8 +163,10 @@ body {
 	color: var(--color-text-light);
 }
 
-.content ul {
-	margin: 1rem 0 1rem 2rem;
+.content ul,
+.content ol {
+	margin: 1rem 0;
+	padding-left: 2rem;
 }
 
 .content li {
