@@ -2,6 +2,12 @@
 
 An awesome static site generator and server with built-in SPA routing. Write markdown, get a fast single-page site.
 
+## TODO
+
+- [ ] Add RSS
+- [ ] Add SEO (render bot, ssr?)
+- [ ] Add theming, init
+
 ## Features
 
 - **Markdown with frontmatter** - YAML metadata support
@@ -62,6 +68,7 @@ func main() {
 ### Create Your Template
 
 **templates/index.html:**
+
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -87,6 +94,7 @@ func main() {
 ### Write Content
 
 **content/about.md:**
+
 ```markdown
 ---
 title: About Me
@@ -130,6 +138,7 @@ tags: [go, web]
 ```
 
 The `title` field is used for:
+
 - Document title (browser tab)
 - Navigation text (if not nested)
 
@@ -166,6 +175,7 @@ if err := site.Build(); err != nil {
 ```
 
 This creates a `dist/` directory with:
+
 - `index.html` - Your template
 - `content.json` - Rendered pages
 - `app.js` - Generated SPA router
@@ -177,14 +187,18 @@ Deploy the `dist/` folder to any static host, or serve it with the built-in serv
 ## Deployment
 
 ### Static Hosting
+
 Deploy `dist/` to:
+
 - Cloudflare Pages
 - Netlify
 - Vercel
 - GitHub Pages
 
 ### Self-Hosted
+
 Run the Go server:
+
 - Fly.io
 - Railway
 - Your own server + Cloudflare Tunnel
